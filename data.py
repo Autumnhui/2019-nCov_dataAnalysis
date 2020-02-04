@@ -60,28 +60,3 @@ china_province_num_list = []
 for i in china_list[0]:
     china_province_num_list.append(i['total']['confirm'])
 print('中国各省份病例数目列表',china_province_num_list)
-
-
-
-
-# for i in len(data['areaTree']):
-#     place = data['areaTree']['name']
-#     print(place)
-
-# confirm_list = list()
-# for item in data:
-
-# data.sort(key=lambda x: x['date'])
-
-# date_list = list()  # 日期
-# confirm_list = list()  # 确诊
-# suspect_list = list()  # 疑似
-# dead_list = list()  # 死亡
-# heal_list = list()  # 治愈
-# for item in data:
-    # month, day = item['date'].split('.')
-    # date_list.append(datetime.strptime('2020-%s-%s' % (month, day), '%Y-%m-%d'))
-    # confirm_list.append(int(item['confirm']))
-    # suspect_list.append(int(item['suspect']))
-    # dead_list.append(int(item['dead']))
-    # heal_list.append(int(item['heal']))

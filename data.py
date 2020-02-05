@@ -33,13 +33,13 @@ print('数据更新时间：',time)
 world_data= data['areaTree']
 # print(world_data)
 
-# 有病例国家列表
+# 发现病例国家列表
 country_list =[]
 for i in world_data:
     country_list.append(i['name'])
-print('有病例国家列表',country_list)
+print('发现病例国家列表',country_list)
 
-# 各国家数目
+# 各国家存在病例数目
 country_num_list =[]
 for i in world_data:
     country_num_list.append(i['total']['confirm'])
@@ -47,7 +47,7 @@ print('各国家数目',country_num_list)
 
 # 中国地区总列表
 china_list = [world_data[0]['children']]
-print('中国地区总列表',china_list)
+# print('中国地区总列表',china_list)
 
 # 中国各省份列表
 china_province_list = []
@@ -56,7 +56,46 @@ for i in china_list[0]:
 print('中国各省份列表',china_province_list)
 
 # 中国各省份病例数目列表
-china_province_num_list = []
+china_province_confirm_num_list = []
 for i in china_list[0]:
-    china_province_num_list.append(i['total']['confirm'])
-print('中国各省份病例数目列表',china_province_num_list)
+    china_province_confirm_num_list.append(i['total']['confirm'])
+print('中国各省份确诊病例数目列表',china_province_confirm_num_list)
+
+china_province_dead_num_list = []
+for i in china_list[0]:
+    china_province_dead_num_list.append(i['total']['dead'])
+print('中国各省份死亡数目列表',china_province_dead_num_list)
+
+china_province_heal_num_list = []
+for i in china_list[0]:
+    china_province_heal_num_list.append(i['total']['heal'])
+print('中国各省份治愈数目列表',china_province_heal_num_list)
+
+
+# 中国存在病例的所有城市列表-确诊，死亡，治愈
+china_city0_list =[]
+for i in china_list[0]:
+    china_city0_list.append(i['children'])         # 列表嵌套列表（一个省份为一个列表）
+china_city1_list=sum(china_city0_list,[])          # 将列表合并为一个列表，再进行取值
+china_city_list=[]
+for a in china_city1_list:
+    china_city_list.append(a['name'])
+print('各省份城市存在病例列表',china_city_list)
+
+# 各省份城市确诊数目列表
+china_city_confirm_num_list=[]
+for a in china_city1_list:
+    china_city_confirm_num_list.append(a['total']['confirm'])
+print('各省份城市确诊数目列表',china_city_confirm_num_list)
+
+# 各省份城市死亡数目列表
+china_city_dead_num_list=[]
+for a in china_city1_list:
+    china_city_dead_num_list.append(a['total']['dead'])
+print('各省份城市死亡数目列表',china_city_dead_num_list)
+
+# 各省份城市治愈数目列表
+china_city_heal_num_list=[]
+for a in china_city1_list:
+    china_city_heal_num_list.append(a['total']['heal'])
+print('各省份城市治愈数目列表',china_city_heal_num_list)

@@ -3,9 +3,38 @@
 import time,requests,json
 
 # 数据获取
+## 人数数据
 url = 'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&callback=&_=%d'%int(time.time()*1000)
 data = json.loads(requests.get(url=url).json()['data'])
 print(data)
+## 新闻数据
+url = 'https://view.inews.qq.com/g2/getOnsInfo?name=wuwei_ww_time_line&callback=&_=%25d'%int(time.time()*1000)
+news_data = json.loads(requests.get(url=url).json()['data'])
+print(news_data)
+
+# 新闻时间
+news_time=[]
+# for i in news_data:
+#     news_time.append(i['time'])
+# print(news_time)
+#
+# # 新闻标题
+news_title=[]
+# for i in news_data:
+#     news_title.append(i['title'])
+# print(news_title)
+news_time=[]
+news_title=[]
+news_desc=[]
+news_source=[]
+news=[]
+news_all=[news_time,news_title,news_desc,news_source]
+news_type=['time','title','desc','source']
+for a in news_all:
+    for b in news_type:
+        for c in news_data:
+            a.append(c[b])
+print(news_desc)
 
 # 创建列表
 confirm_total_china = list()

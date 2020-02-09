@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2019-nCov新型肺炎数据</title>
+    <style>
+table {
+position: relative;
+width: 100%;
+display: block;
+}
+
+thead {
+float: left;
+}
+
+tbody tr {
+display: inline-block;
+}
+
+th, td {
+display: block;
+}
+
+    </style>
+</head>
+<h1 style="text-align: center">2019-nCov 新型肺炎相关数据</h1>
+<body>
+<table>
+<tr>
+    <th>全国确诊人数：{{ confirm_total_china }}</th>
+</tr>
+<tr>
+    <th>全国疑似人数：{{ suspect_total_china }}</th>
+</tr>
+<tr>
+    <th>全国死亡人数：{{ dead_total_china }}</th>
+</tr>
+<tr>
+    <th>全国治愈人数：{{ heal_total_china }}</th>
+</tr>
+</table>
+
+<table>
+    <tr>
+        {% for country_list1 in country_list %}
+          <th>{{ country_list1 }}</th>
+        {% endfor %}
+    </tr>
+
+    <tr>{% for country_num_list1 in country_num_list %}
+        <td>{{ country_num_list1 }}</td>
+        {% endfor %}
+    </tr>
+</table>
+
+
+
+</body>
+</html>

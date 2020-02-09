@@ -1,8 +1,9 @@
 # Author: Autumnhui
-
+from flask import Flask,render_template,request
 import time,requests,json
 
 # 数据获取
+## 人数数据
 url = 'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&callback=&_=%d'%int(time.time()*1000)
 data = json.loads(requests.get(url=url).json()['data'])
 print(data)
@@ -125,3 +126,41 @@ for a in china_city1_list:
     china_city_heal_num_list.append(a['total']['heal'])
 print('各省份城市治愈数目列表',china_city_heal_num_list)
 
+
+
+app = Flask(__name__)
+
+@app.route('/')
+def entry():
+    data1=confirm_total_china # 中国确诊人数
+    data2=suspect_total_china # 中国疑似人数
+    data3=dead_total_china # 中国死亡人数
+    data4=heal_total_china # 中国治愈人数
+    place1=country_list # 发现病例国家列表
+    place2= china_province_list # 中国存在病例省份列表
+    place3=china_city_list # 中国存在病例城市列表
+    num1= country_num_list # 各国家数目
+    num2= china_province_confirm_num_list # 中国各省份病例数目
+    num3=china_province_dead_num_list # 中国各省份死亡数目列表
+    num4=china_province_heal_num_list # 中国各省份治愈数目列表
+    num5=china_city_confirm_num_list #各省份城市确诊数目列表
+    num6=china_city_dead_num_list #各省份城市死亡数目列表
+    num7=china_city_heal_num_list #各省份城市治愈数目列表
+    return render_template('show_data.html',
+                           confirm_total_china=data1,
+                           suspect_total_china=data2,
+                           dead_total_china=data3,
+                           heal_total_china=data4,
+                           country_list=place1,
+                           china_province_list=place2,
+                           china_city_list=place3,
+                           country_num_list=num1,
+                           china_province_confirm_num_list=num2,
+                           china_province_dead_num_list=num3,
+                           china_province_heal_num_list=num4,
+                           china_city_confirm_num_list=num5,
+                           china_city_dead_num_list=num6,
+                           china_city_heal_num_list=num7)
+
+if __name__ == '__main__':
+    app.run()

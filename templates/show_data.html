@@ -3,44 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>2019-nCov新型肺炎数据</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- non-minified -->
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <!-- latest -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- core style only -->
+    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
     <style>
-table {
-position: relative;
-width: 100%;
-display: block;
-}
+        table {
+            position: relative;
+            width: 100%;
+            display: block;
+        }
 
-thead {
-float: left;
-}
+        /*thead {*/
+        /*float: left;*/
+        /*}*/
 
-tbody tr {
-display: inline-block;
-}
+        tbody tr {
+            display: inline-block;
+            border-left-width: 200px;
+        }
 
-th, td {
-display: block;
-}
-
+        th, td {
+        display: block;
+        }
     </style>
 </head>
-<h1 style="text-align: center">2019-nCov 新型肺炎相关数据</h1>
-<body>
-<table>
-<tr>
-    <th>全国确诊人数：{{ confirm_total_china }}</th>
-</tr>
-<tr>
-    <th>全国疑似人数：{{ suspect_total_china }}</th>
-</tr>
-<tr>
-    <th>全国死亡人数：{{ dead_total_china }}</th>
-</tr>
-<tr>
-    <th>全国治愈人数：{{ heal_total_china }}</th>
-</tr>
-</table>
 
+<h1 style="text-align: center">2019-nCov 新型肺炎相关数据</h1>
+
+<body>
+
+<div align="center">
+    <p>全国确诊人数：{{ confirm_total_china }}</p>
+
+    <p>全国疑似人数：{{ suspect_total_china }}</p>
+
+    <p>全国死亡人数：{{ dead_total_china }}</p>
+
+    <p>全国治愈人数：{{ heal_total_china }}</p>
+</div>
+
+<div id="各国人数" >
+<p>
+    <input id="button1" type="button" value="点击显示各国人数" style=""/>
+    <input id="button2" type="button" value="隐藏" />
+</p>
+<div id="div1" style="display :none ;">
 <table>
     <tr>
         {% for country_list1 in country_list %}
@@ -52,9 +63,49 @@ display: block;
         <td>{{ country_num_list1 }}</td>
         {% endfor %}
     </tr>
+</div>
+<script type="text/javascript">
+$("#button1").click(function(){
+  $("#div1").fadeIn();
+});
+
+$("#button2").click(function(){
+  $("#div1").fadeOut();
+});
+</script>
 </table>
+</div>
 
 
+<div id="各省人数">
+<p>
+    <input id="button3" type="button" value="点击显示各省人数" />
+    <input id="button4" type="button" value="隐藏" />
+</p>
+<div id="div2" style="display :none ;">
+<table>
+    <tr>
+        {% for china_province_list1 in china_province_list %}
+          <th>{{ china_province_list1 }}</th>
+        {% endfor %}
+    </tr>
+
+    <tr>{% for china_province_confirm_num_list1 in china_province_confirm_num_list %}
+        <td>{{ china_province_confirm_num_list1 }}</td>
+        {% endfor %}
+    </tr>
+</div>
+<script type="text/javascript">
+$("#button3").click(function(){
+  $("#div2").fadeIn();
+});
+
+$("#button4").click(function(){
+  $("#div2").fadeOut();
+});
+</script>
+</table>
+</div>
 
 </body>
 </html>

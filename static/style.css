@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+
+@font-face {
+  font-family: 'pixel';
+  src: url('/static/pixel.ttf');
+}
+html, body, pre, code, kbd, samp,p,h1 {
+    font-family: "pixel";
+}
+table {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+thead {
+float: left;
+}
+
+tbody tr {
+    display: inline-block;
+    border-left-width: 200px;
+}
+
+th, td {
+display: block;
+}

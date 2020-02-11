@@ -132,6 +132,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def entry():
+    time1=time #数据时间
     data1=confirm_total_china # 中国确诊人数
     data2=suspect_total_china # 中国疑似人数
     data3=dead_total_china # 中国死亡人数
@@ -147,6 +148,7 @@ def entry():
     num6=china_city_dead_num_list #各省份城市死亡数目列表
     num7=china_city_heal_num_list #各省份城市治愈数目列表
     return render_template('show_data.html',
+                           time=time1,
                            confirm_total_china=data1,
                            suspect_total_china=data2,
                            dead_total_china=data3,

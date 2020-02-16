@@ -3,26 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>2019-nCov新型肺炎数据</title>
-    <!-- minify -->
-    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
-    <!-- latest -->
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
-    <!-- core style only -->
-    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
+<!--    &lt;!&ndash; minify &ndash;&gt;-->
+<!--    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />-->
+<!--    &lt;!&ndash; latest &ndash;&gt;-->
+<!--    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />-->
+<!--    &lt;!&ndash; core style only &ndash;&gt;-->
+<!--    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />-->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <link href="/static/style.css" rel="stylesheet"/>
-    <style>
-    @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
-    @font-face {
-      font-family: 'pixel';
-      src: url('/static/pixel.ttf');
-    }
-    </style>
+
 </head>
+<h1 style="text-align: center">2019-nCov 新型肺炎相关数据</h1>
 
 <body>
-<h1 style="text-align: center">2019-nCov 新型肺炎相关数据</h1>
 <div align="center">
     <p>全国确诊人数：{{ confirm_total_china }}</p>
 
@@ -35,11 +29,14 @@
     <p>数据更新时间：{{ time }}</p>
 </div>
 
-<div id="各国人数" >
-<p><b>各国人数</b>
+<div>
+<p>
+    <b>各国人数</b>
     <input id="button1" type="button" value=" ⬇️" style="border-radius: 21px;cursor: s-resize"/>
 </p>
+
 <div id="div1" style="display :none ;">
+
 <table>
     <tr>
         {% for country_list1 in country_list %}
@@ -51,8 +48,9 @@
         <td>{{ country_num_list1 }}</td>
         {% endfor %}
     </tr>
-    <input id="button2" type="button" value=" ⬆️" style="border-radius: 21px;cursor: n-resize"/>
+</table>
 
+    <input id="button2" type="button" value=" ⬆️" style="border-radius: 21px;cursor: n-resize"/>
 </div>
 <script type="text/javascript">
 $("#button1").click(function(){
@@ -63,15 +61,14 @@ $("#button2").click(function(){
   $("#div1").fadeOut();
 });
 </script>
-</table>
+
 </div>
 
-
-<div id="各省人数">
+<div>
 <p><b>各省人数</b>
     <input id="button3" type="button" value=" ⬇️" style="border-radius: 21px;cursor: s-resize"/>
 </p>
-<div id="div2" style="display :none ;">
+<div id="div2" style="display :none ;" class="2.1">
 <table>
     <tr>
         {% for china_province_list1 in china_province_list %}
@@ -83,10 +80,10 @@ $("#button2").click(function(){
         <td>{{ china_province_confirm_num_list1 }}</td>
         {% endfor %}
     </tr>
+</table>
     <input id="button4" type="button" value=" ⬆️" style="border-radius: 21px;cursor: n-resize"/>
-
 </div>
-<script type="text/javascript">
+    <script type="text/javascript">
 $("#button3").click(function(){
   $("#div2").fadeIn();
 });
@@ -95,8 +92,9 @@ $("#button4").click(function(){
   $("#div2").fadeOut();
 });
 </script>
-</table>
+
 </div>
+
 
 </body>
 </html>
